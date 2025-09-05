@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Edmonton Construction Company</title>
+  <meta name="description" content="Tar paving, concrete surfacing & retaining walls — Edmonton Construction Company. Contact: 067 952 8928" />
+  <style>
+    :root{
+      --bg:#0f0f10;           /* deep black */
+      --panel:#141414;
+      --accent:#f2c400;       /* yellow highlight */
+      --muted:#bdbdbd;        /* soft white */
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --max-width:1200px;
+      --ease: 250ms cubic-bezier(.2,.8,.2,1);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Basic reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:120px; /* space for floating CTA */
+    }
+
+    .container{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:28px;
+    }
+
+    /* Header / hero */
+    header{
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:center;
+    }
+    @media (max-width:880px){
+      header{grid-template-columns:1fr; padding:20px}
+    }
+
+    .brand{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .logo{
+      width:86px;
+      height:86px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.07));
+      border:4px solid rgba(255,255,255,0.03);
+      position:relative;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .logo::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:10px;
+      background:
+        repeating-linear-gradient(-45deg, var(--accent) 0 6px, transparent 6px 12px);
+      opacity:0.12;
+      mix-blend-mode:screen;
+    }
+    .company{
+      display:flex;
+      flex-direction:column;
+    }
+    h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:1px;
+      color:white;
+      line-height:1;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:13px;
+    }
+
+    /* services */
+    .services{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .service{
+      display:inline-flex;
+      gap:10px;
+      background:var(--glass);
+      padding:10px 12px;
+      border-radius:10px;
+      align-items:center;
+      font-weight:600;
+      color:var(--accent);
+      font-size:13px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    /* CTA box on the right */
+    .cta-box{
+      background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.02));
+      padding:18px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+    }
+    .cta-box .phone{
+      font-size:22px;
+      font-weight:800;
+      color:white;
+      letter-spacing:1px;
+    }
+    .cta-box .whatsapp-btn{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg, rgba(0,0,0,0.15), rgba(255,255,255,0.02));
+      border:2px solid rgba(255,255,255,0.03);
+      cursor:pointer;
+      transition:transform var(--ease), box-shadow var(--ease);
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .whatsapp-btn:hover{ transform:translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.6)}
+
+    /* Sections */
+    section{
+      margin-top:28px;
+      border-radius:14px;
+      padding:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    section h2{
+      margin:0 0 16px 0;
+      font-size:18px;
+      color:white;
+      letter-spacing:0.6px;
+    }
+
+    /* Gallery */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    @media (max-width:1100px){ .gallery-grid{ grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width:720px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width:420px){ .gallery-grid{ grid-template-columns: repeat(1, 1fr); } }
+
+    .project{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+      border-radius:10px;
+      overflow:hidden;
+      min-height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:transform var(--ease), box-shadow var(--ease);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .project img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      vertical-align:middle;
+      transition:transform var(--ease);
+    }
+    .project:hover{ transform:translateY(-6px) }
+    .project::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,0.25));
+      opacity:0.9;
+      pointer-events:none;
+    }
+    .project .label{
+      position:absolute;
+      left:10px;
+      bottom:10px;
+      color:white;
+      font-weight:700;
+      font-size:13px;
+      z-index:5;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    .hidden { display:none }
+    .controls{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+    }
+    .btn{
+      background:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent);
+      padding:10px 16px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      transition:all var(--ease);
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+    }
+    .btn:hover{ transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.6) }
+
+    /* About/Contact layout */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width:880px){ .two-col{ grid-template-columns:1fr } }
+
+    .contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+      border-radius:12px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .contact-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:10px 0;
+      font-weight:700;
+    }
+
+    /* Floating whatsapp CTA (bottom-right) */
+    .floating-wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:9999;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .floating-wa a{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:var(--accent);
+      color:#111;
+      border-radius:999px;
+      padding:14px 18px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      transition:transform var(--ease);
+    }
+    .floating-wa a:hover{ transform:translateY(-6px) }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      background:rgba(0,0,0,0.85);
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+      padding:28px;
+    }
+    .lightbox.active{ display:flex }
+    .lightbox img{
+      max-width:95%;
+      max-height:85%;
+      border-radius:10px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    }
+    .close-x{
+      position:fixed;
+      right:30px;
+      top:18px;
+      color:var(--muted);
+      font-size:24px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    footer{
+      margin-top:18px;
+      color:rgba(255,255,255,0.45);
+      font-size:13px;
+      text-align:center;
+      padding:18px 0;
+    }
+
+    /* small helpers */
+    .muted{ color:rgba(255,255,255,0.6) }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="z-index:2">
+              <rect x="1" y="5" width="22" height="14" rx="2" fill="black" stroke="white" stroke-opacity="0.06"></rect>
+              <path d="M4 8h16M4 12h16M4 16h10" stroke="white" stroke-opacity="0.06" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="company">
+            <h1>EDMONTON CONSTRUCTION COMPANY</h1>
+            <div class="subtitle">Tar paving • Concrete surfacing • Retaining walls</div>
+          </div>
+        </div>
+
+        <div class="services" aria-hidden="false">
+          <div class="service">• Tar Paving</div>
+          <div class="service">• Concrete Surfacing</div>
+          <div class="service">• Retaining Walls</div>
+          <div class="service">• Site Prep & Repairs</div>
+        </div>
+      </div>
+
+      <div class="cta-box" aria-label="Contact">
+        <div style="font-size:12px;color:var(--muted)">WhatsApp / Call</div>
+        <div class="phone">067 952 8928</div>
+        <!-- whatsapp link uses JS variable for flexibility; replace country code in script if needed -->
+        <a href="#" class="whatsapp-btn" id="topWhatsapp" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.6))">
+            <path d="M20.5 3.5L3 21" stroke="white" stroke-opacity="0.06" stroke-width="1.2"/>
+            <path d="M20.5 3.5C19.1 2.1 17 1.3 14.9 1.3 10.6 1.3 7 4.9 7 9.2c0 1.2.3 2.4.9 3.4L4 20.5 11.4 17.1c1 .5 2.2.8 3.4.8 4.3 0 7.9-3.6 7.9-7.9 0-2.1-.8-4.1-2.2-5.6z" fill="white" opacity="0.06"></path>
+            <path d="M17.2 13.5c-.4-.2-2.5-1.2-2.9-1.3-.4-.1-.7-.2-1 .2-.2.3-1.1 1.3-1.3 1.6-.2.3-.4.4-.8.2-.4-.2-1.6-.6-3-.9-.6-.2-1-.6-1.1-1.1-.1-.4 0-.6.3-.9.2-.2.4-.5.6-.7.2-.2.3-.4 0-.8-.3-.4-1-1-1.4-1.4-.4-.4-.8-.2-1.1-.1-.2.1-1.8.8-1.8 2.2 0 1.3 1.9 2.9 2.2 3.1.3.2 3.8 5.6 8.9 7.6 1.2.5 2.1.3 2.8.2.8-.1 2.5-1 2.9-2.1.4-1.1.4-2.3.3-2.4-.1-.1-1.2-.2-1.6-.4z" fill="black"/>
+          </svg>
+          Message
+        </a>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Open business hours: Mon–Sat</div>
+      </div>
+    </header>
+
+    <!-- Projects gallery -->
+    <section aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects Gallery</h2>
+      <p class="muted">A selection of recent projects</p>
+
+      <div class="gallery-grid" id="gallery">
+        <!-- Initial 8 visible projects -->
+        <div class="project" data-src="images/project1.jpg" tabindex="0">
+          <img src="images/image-1.jpeg" alt="Project 1" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project2.jpg" tabindex="0">
+          <img src="images/image-2.jpeg" alt="Project 2" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project3.jpg" tabindex="0">
+          <img src="images/image-3.jpeg" alt="Project 3" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project4.jpg" tabindex="0">
+          <img src="images/image-4.jpeg" alt="Project 4" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project5.jpg" tabindex="0">
+          <img src="images/image-5.jpeg" alt="Project 5" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project6.jpg" tabindex="0">
+          <img src="images/image-6.jpeg" alt="Project 6" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project7.jpg" tabindex="0">
+          <img src="images/image-7.jpeg" alt="Project 7" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project" data-src="images/project8.jpg" tabindex="0">
+          <img src="images/image-8.jpeg" alt="Project 8" loading="lazy">
+          <div class="label"></div>
+        </div>
+
+        <!-- Hidden projects (revealed by "Load more") - 2 additional -->
+        <div class="project hidden" data-src="images/project9.jpg" tabindex="0">
+          <img src="images/image-9.jpeg" alt="Project 9" loading="lazy">
+          <div class="label"></div>
+        </div>
+        <div class="project hidden" data-src="images/project10.jpg" tabindex="0">
+          <img src="images/image-10.jpeg" alt="Project 10" loading="lazy">
+          <div class="label"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="loadMore">Load More</button>
+      </div>
+    </section>
+
+    <!-- About & Contact -->
+    <section aria-labelledby="about-heading">
+      <div class="two-col">
+        <div>
+          <h2 id="about-heading">About Edmonton Construction Company</h2>
+          <p class="muted">We deliver durable paving, clean concrete surfacing, and engineered retaining walls. Our team focuses on solid site preparation, attention to drainage, and finishes that last decades.</p>
+          <ul>
+            <li>Fully insured and safety-compliant</li>
+            <li>Quality materials and proven techniques</li>
+            <li>Transparent estimates and timelines</li>
+          </ul>
+        </div>
+
+        <aside class="contact-card" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contact</h2>
+          <div class="contact-row">
+            <strong>WhatsApp</strong>
+            <a href="#" id="contactWhatsApp" class="muted">Message 067 952 8928</a>
+          </div>
+          <div class="contact-row"><strong>Phone</strong><span class="muted">067 952 8928</span></div>
+          <div class="contact-row"><strong>Email</strong><span class="muted">info@edmonton-construction.example</span></div>
+          <div style="font-size:13px;color:var(--muted);margin-top:8px">Location: Durban & surrounding areas</div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Edmonton Construction Company — Built with durability in mind.
+    </footer>
+  </div>
+
+  <!-- Floating WhatsApp CTA -->
+  <div class="floating-wa" role="navigation" aria-label="quick contact">
+    <a href="#" id="floatingWhatsApp" aria-label="Message on WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-right:6px">
+        <path d="M20.5 3.5C19.1 2.1 17 1.3 14.9 1.3 10.6 1.3 7 4.9 7 9.2c0 1.2.3 2.4.9 3.4L4 20.5 11.4 17.1c1 .5 2.2.8 3.4.8 4.3 0 7.9-3.6 7.9-7.9 0-2.1-.8-4.1-2.2-5.6z" fill="#111" opacity="0.06"></path>
+      </svg>
+      Message 067 952 8928
+    </a>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <span class="close-x" id="lbClose" aria-label="Close">✕</span>
+    <img id="lightboxImg" alt="Expanded project image">
+  </div>
+
+  <script>
+    // Configuration: set your WhatsApp number (international E.164 digits, no +).
+    // Example for South Africa replace leading 0 with country code 27: 27679528928
+    // If you want to use a different country code, update whatsappNumber accordingly.
+    const whatsappNumber = "27679528928"; // <-- change this to your full country code number (no plus)
+    const prefillText = encodeURIComponent("Hello, I'm interested in a quote for a project.");
+
+    // Helper to build wa.me link
+    function waLink(number) {
+      return "https://wa.me/" + number + "?text=" + prefillText;
+    }
+
+    // Set whatsapp links
+    document.getElementById('floatingWhatsApp').href = waLink(whatsappNumber);
+    document.getElementById('topWhatsapp').href = waLink(whatsappNumber);
+    document.getElementById('contactWhatsApp').href = waLink(whatsappNumber);
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Load more logic
+    const loadBtn = document.getElementById('loadMore');
+    let expanded = false;
+    loadBtn.addEventListener('click', () => {
+      const hidden = document.querySelectorAll('.gallery-grid .hidden');
+      if (!expanded) {
+        hidden.forEach(el => el.classList.remove('hidden'));
+        loadBtn.textContent = "Show Less";
+        expanded = true;
+        // smooth scroll to reveal
+        setTimeout(() => {
+          hidden[0] && hidden[0].scrollIntoView({behavior:'smooth', block:'center'});
+        }, 120);
+      } else {
+        // hide them again
+        hidden.forEach(el => el.classList.add('hidden'));
+        loadBtn.textContent = "Load More";
+        expanded = false;
+        // scroll up a bit to keep user in gallery context
+        document.getElementById('gallery').scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+
+    // Lightbox logic
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLightbox(src, alt){
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "Project image";
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden','true');
+      // small cleanup
+      setTimeout(()=> lightboxImg.src = "", 200);
+    }
+
+    // Delegate click/keyboard events for accessibility
+    gallery.addEventListener('click', (e) => {
+      const p = e.target.closest('.project');
+      if (!p) return;
+      const src = p.getAttribute('data-src') || p.querySelector('img')?.src;
+      const alt = p.querySelector('img')?.alt || "";
+      openLightbox(src, alt);
+    });
+    gallery.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const p = e.target.closest('.project');
+        if (!p) return;
+        e.preventDefault();
+        const src = p.getAttribute('data-src') || p.querySelector('img')?.src;
+        const alt = p.querySelector('img')?.alt || "";
+        openLightbox(src, alt);
+      }
+    });
+
+    // Lightbox events
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Accessibility: focus outline for keyboard users
+    (function(){
+      function handleFirstTab(e){
+        if (e.key === 'Tab') {
+          document.documentElement.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+</body>
+</html>
